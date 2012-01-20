@@ -70,4 +70,14 @@ describe('subPub Test', function () {
         expect(publishDetected).toEqual(2);
         expect(memoReceived).toEqual(false);
     });
+
+    // This test tests to make sure that subPub returns
+    // the window.subPub variable back to a previous object
+    // to play nice. The variable is written in the SpecRunner.html
+    it('should provide a noConflict mechanism', function () {
+        window.sp = subPub.noConflict();
+
+        expect(window.subPub).toEqual('test');
+        expect(window.sp).not.toEqual('undefined');
+    });
 });
