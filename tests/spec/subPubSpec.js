@@ -31,6 +31,10 @@ describe('subPub Test', function () {
         expect(subPub.registry[subscription].length).toEqual(2);
     });
 
+    it('should throw an TypeError exception if callback is not a function', function () {
+        expect(function () {subPub.subscribe(subscription, 'test'); }).toThrow(new TypeError('callback is expected to be a function.'));
+    });
+
     it('should be able to publish', function () {
         var handled = false;
 
